@@ -22,13 +22,13 @@ const EntryContainer = () => {
         }
     ]
 
-    const entries = entriesList.map((entry, id) => {
+    const entries = entriesList.map((entry) => {
         return (
             <div className='flex flex-col mt-[50px]'>
-                <h3 className='text-[#b09746]'>{entry.type}</h3>
-                <h2 className='text-[30px] font-semibold'>{entry.title}</h2>
-                <p>{entry.content}</p>
-                <p className='flex text-[#b09746]'>{entry.date.toLocaleString()}</p>
+                <h3 className='text-[#00ED64]'>{entry.type}</h3>
+                <h2 className='text-[30px] font-semibold text-[#E5EAE8]'>{entry.title}</h2>
+                <p className='text-[#B9C0BF]'>{entry.content}</p>
+                <p className='flex text-blue-400'>{entry.date.toLocaleString()}</p>
             </div>
         )
     })

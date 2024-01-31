@@ -8,28 +8,28 @@ function App() {
   let entries = 2; // Temporary data
 
   return (
-    <>
-      <nav className='flex justify-between'>
+    <div className='bg-[#001E2B]'>
+      <nav className='flex justify-between bg-[#001E2B]'>
         <div className='flex justify-between items-center gap-[5px] ml-[5px] mt-[5px]'>
-          <Icon icon="mdi:github" width="20px" />
-          <h1 className='text-[15px]'>alexandroivaldez</h1>
+          <Icon icon="mdi:github" width="20px" color="#00ED64" />
+          <h1 className='text-[15px] text-blue-400'><a href="https://github.com/alexandroivaldez" target='_blank'>alexandroivaldez</a></h1>
         </div>
       </nav>
-      <div className='w-screen h-screen'>
+      <div className='w-screen h-screen bg-[#001E2B]'>
         <div className='flex flex-col w-[75%] ml-auto mr-auto mt-[50px] justify-center'>
           <div className='flex flex-col w-[220px]'>
-            <h1 className='text-[50px]'>Devlog</h1>
-            <div className='flex justify-between text-[#b09746]'>
-              <p>{currentDate.toDateString()}</p>
-              <p>&#x2022;</p>
-              <p>{entries} stories</p>
+            <h1 className='text-[50px] text-[#E5EAE8]'>Devlog</h1>
+            <div className='flex justify-between'>
+              <p className='text-[#00ED64]'>{currentDate.toDateString()}</p>
+              <p className='text-[#00ED64]'>&#x2022;</p>
+              <p className='text-[#00ED64]'>{entries} stories</p>
             </div>
           </div>
           <EntryContainer />
         </div>
       </div>
 
-    </>
+    </div>
   )
 }
 
