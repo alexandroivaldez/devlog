@@ -1,31 +1,5 @@
 const EntryContainer = () => {
 
-    // Future mongoDB x Lambda code
-    // const { MongoClient } = require('mongodb');
-
-    // exports.handler = async (event, context) => {
-    //     const uri = 'mongodb://<username>:<password>@<mongodb-host>:<port>/<database>';
-    //     const client = new MongoClient(uri);
-
-    //     try {
-    //         await client.connect();
-    //         const collection = client.db().collection('<collection>');
-    //         const result = await collection.find({}).toArray();
-    //         return {
-    //             statusCode: 200,
-    //             body: JSON.stringify(result),
-    //         };
-    //     } catch (err) {
-    //         console.error(err);
-    //         return {
-    //             statusCode: 500,
-    //             body: JSON.stringify({ message: 'Error fetching data' }),
-    //         };
-    //     } finally {
-    //         client.close();
-    //     }
-    // };
-
     // Temporary data
     const entriesList = [
         {
@@ -48,9 +22,9 @@ const EntryContainer = () => {
         }
     ]
 
-    const entries = entriesList.map((entry) => {
+    const entries = entriesList.map((entry, id) => {
         return (
-            <div className='flex flex-col mt-[50px]'>
+            <div className='flex flex-col mt-[50px]' key={id} >
                 <h3 className='text-[#6CF4B5]'>{entry.type}</h3>
                 <h2 className='text-[30px] font-semibold text-[#008FE5] hover:cursor-pointer'>{entry.title}</h2>
                 <p className='text-[#E5EAE8]'>{entry.content}</p>
