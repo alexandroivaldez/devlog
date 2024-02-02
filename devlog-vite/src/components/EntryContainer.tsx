@@ -19,6 +19,12 @@ const EntryContainer = () => {
             title: "unethical design of cookie windows",
             content: "All of the sites we visit today use trackers called cookies. These cookies always track our internet footprint and collect data about us...",
             date: Date()
+        },
+        {
+            type: "Work",
+            title: "unethical design of cookie windows",
+            content: "All of the sites we visit today use trackers called cookies. These cookies always track our internet footprint and collect data about us...",
+            date: Date()
         }
     ]
 
