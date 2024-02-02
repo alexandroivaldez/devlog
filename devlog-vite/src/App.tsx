@@ -19,15 +19,12 @@ function App() {
   const [responseMessage, setResponseMessage] = useState('');
 
   const sendDataToLambda = () => {
-    const url = 'https://1qcfnho0x7.execute-api.us-east-1.amazonaws.com/default/AddEntry';
-
+    const url = 'https://iivx7fdqk0.execute-api.us-east-1.amazonaws.com/dev';
+    console.log("Data sent!");
     fetch(url, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
-        'Origin': 'http://localhost:5173',
-        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify(data)
     })
@@ -47,6 +44,34 @@ function App() {
       });
   };
 
+  const getDataFromLambda = () => {
+    const url = 'https://nmega69f5e.execute-api.us-east-1.amazonaws.com/dev';
+    console.log("Test!");
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => {
+        console.log()
+        if (response.status == 200) {
+          return response.json();
+        } else {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+      })
+      .then((responseData) => {
+        console.log(responseData)
+        setResponseMessage(responseData.body);
+      })
+      .catch((error) => {
+        setResponseMessage(error.message);
+      });
+  };
+
+
+
   return (
     <div className='bg-[#001E2B]'>
       <nav className='flex justify-between bg-[#001E2B]'>
@@ -55,8 +80,12 @@ function App() {
           <h1 className='text-[15px] text-[#008FE5]'><a href="https://github.com/alexandroivaldez/devlog" target='_blank'>alexandroivaldez / devlog</a></h1>
         </div>
       </nav>
-      <button onClick={sendDataToLambda}>Send Data to Lambda</button>
-      <p>{responseMessage}</p>
+      <div className='flex flex-col w-[100px]'>
+        <button onClick={sendDataToLambda} className='text-white border border-green-300 bg-green-300 hover:bg-green-500'>Send Data to Lambda</button>
+        <br />
+        <button onClick={getDataFromLambda} className='text-white border border-green-300 bg-green-300 hover:bg-green-500'>Get Data from Lambda</button>
+      </div>
+      {/* <p className="text-white">{responseMessage}</p> */}
       <div className='w-screen h-screen bg-[#001E2B]'>
         <div className='flex flex-col w-[75%] ml-auto mr-auto mt-[50px] justify-center'>
           <div className='flex flex-col w-[220px]'>
