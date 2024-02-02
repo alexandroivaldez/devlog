@@ -1,43 +1,42 @@
-const EntryContainer = () => {
+import React from 'react';
 
-    // Temporary data
-    const entriesList = [
-        {
-            type: "Work",
-            title: "unethical design of cookie windows",
-            content: "All of the sites we visit today use trackers called cookies. These cookies always track our internet footprint and collect data about us...",
-            date: Date()
-        },
-        {
-            type: "Work",
-            title: "unethical design of cookie windows",
-            content: "All of the sites we visit today use trackers called cookies. These cookies always track our internet footprint and collect data about us...",
-            date: Date()
-        },
-        {
-            type: "Work",
-            title: "unethical design of cookie windows",
-            content: "All of the sites we visit today use trackers called cookies. These cookies always track our internet footprint and collect data about us...",
-            date: Date()
-        },
-        {
-            type: "Work",
-            title: "unethical design of cookie windows",
-            content: "All of the sites we visit today use trackers called cookies. These cookies always track our internet footprint and collect data about us...",
-            date: Date()
+interface EntryContainerProps {
+    data: {
+        _id: string;
+        type: string;
+        title: string;
+        content: string;
+        date: string;
+    };
+}
+
+const EntryContainer: React.FC<EntryContainerProps> = ({ data }) => {
+
+    let entries = "";
+
+    try {
+        const dataArray = JSON.parse(data);
+
+        entries = dataArray.map((entry, id) => {
+            return (
+                <div className='flex flex-col mt-[50px]' key={id} >
+                    <h3 className='text-[#6CF4B5]'>{entry.type}</h3>
+                    <h2 className='text-[30px] font-semibold text-[#008FE5] hover:cursor-pointer'>{entry.title}</h2>
+                    <p className='text-[#E5EAE8]'>{entry.content}</p>
+                    <p className='flex text-[#B9C0BF]'>{entry.date.toLocaleString()}</p>
+                </div>
+            )
+        })
+    } catch (error) {
+        if(data == undefined){
+            
+        } else {
+            console.error('Error parsing JSON:' + error);
         }
-    ]
+        
+    }
 
-    const entries = entriesList.map((entry, id) => {
-        return (
-            <div className='flex flex-col mt-[50px]' key={id} >
-                <h3 className='text-[#6CF4B5]'>{entry.type}</h3>
-                <h2 className='text-[30px] font-semibold text-[#008FE5] hover:cursor-pointer'>{entry.title}</h2>
-                <p className='text-[#E5EAE8]'>{entry.content}</p>
-                <p className='flex text-[#B9C0BF]'>{entry.date.toLocaleString()}</p>
-            </div>
-        )
-    })
+
 
     return (
         <div>

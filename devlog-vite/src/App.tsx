@@ -1,31 +1,20 @@
 import { Icon } from '@iconify/react';
 import './App.css'
 import EntryContainer from './components/EntryContainer';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BasicForm from './components/BasicForm';
 
 function App() {
 
   const currentDate: Date = new Date(); // Current data and time
   let entries = 2;
-  let title = "Some random title";
-  let type = "Work";
 
-  const [view, setView] = useState(true);
+  const [responseMessage, setResponseMessage] = useState();
 
-  const [data, setData] = useState({
-    title: title,
-    type: type,
-    date: currentDate
-  });
-
-  const [responseMessage, setResponseMessage] = useState('');
-
-  
+  const [testData, setTestData] = useState([{ "_id": "65bd5d8db0405eaf75145407", "type": "aasdasda", "title": "asdasdadd", "content": "dsdsdsdsdsdsd", "date": "Fri Feb 02 2024 15:24:24 GMT-0600 (Central Standard Time)" }, { "_id": "65bd5d8db0405eaf75145407", "type": "aasdasda", "title": "asdasdadd", "content": "dsdsdsdsdsdsd", "date": "Fri Feb 02 2024 15:24:24 GMT-0600 (Central Standard Time)" }]);
 
   const getDataFromLambda = () => {
     const url = 'https://nmega69f5e.execute-api.us-east-1.amazonaws.com/dev';
-    console.log("Test!");
     fetch(url, {
       method: 'GET',
       headers: {
@@ -33,7 +22,6 @@ function App() {
       }
     })
       .then((response) => {
-        console.log()
         if (response.status == 200) {
           return response.json();
         } else {
@@ -41,13 +29,17 @@ function App() {
         }
       })
       .then((responseData) => {
-        console.log(responseData)
         setResponseMessage(responseData.body);
       })
       .catch((error) => {
         setResponseMessage(error.message);
       });
   };
+
+  // Call function on mount
+  useEffect(() => {
+    getDataFromLambda();
+  }, []);
 
   return (
     <div className='bg-[#001E2B]'>
@@ -68,13 +60,10 @@ function App() {
               <p className='text-[#B9C0BF]'>&#x2022;</p>
               <p className='text-[#B9C0BF]'>{entries} stories</p>
             </div>
-            <div className='flex flex-col w-[100px]'>
-              <button onClick={getDataFromLambda} className='text-white border border-green-300 bg-green-300 hover:bg-green-500'>Get Data from Lambda</button>
-            </div>
-            
+
           </div>
           <BasicForm />
-          <EntryContainer />
+          <EntryContainer data={responseMessage} />
         </div>
       </div>
 

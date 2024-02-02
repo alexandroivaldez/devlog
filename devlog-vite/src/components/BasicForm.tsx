@@ -20,7 +20,6 @@ const BasicForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const url = 'https://iivx7fdqk0.execute-api.us-east-1.amazonaws.com/dev';
-        console.log("Data sent!");
         fetch(url, {
             method: 'POST',
             headers: {
@@ -58,11 +57,10 @@ const BasicForm = () => {
     };
 
     return (
-        <div>
-            <h2>Basic Form</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="type">Type:</label>
+        <div className="flex flex-col">
+            <form onSubmit={handleSubmit} className="flex flex-col">
+                <div className="flex flex-col">
+                    <label htmlFor="type" className='text-white'>Type:</label>
                     <input
                         required
                         type="text"
@@ -72,8 +70,8 @@ const BasicForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label htmlFor="title">Title:</label>
+                <div className="flex flex-col" >
+                    <label htmlFor="title" className='text-white'>Title:</label>
                     <input
                         required
                         type="text"
@@ -83,8 +81,8 @@ const BasicForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label htmlFor="content">Content:</label>
+                <div className="flex flex-col">
+                    <label htmlFor="content" className='text-white'>Content:</label>
                     <input
                         required
                         type="textarea"
@@ -101,13 +99,3 @@ const BasicForm = () => {
 }
 
 export default BasicForm;
-
-{/* <div className='border bored-red-700 w-[100%] flex flex-col gap-[5px] text-[#B9C0BF]'>
-              <label>Title:</label>
-              <input type="text" name="title"></input>
-              <label>Type:</label>
-              <input type="text"></input>
-              <label>Entry</label>
-              <input type="textarea"></input>
-              <button onClick={sendDataToLambda} className='text-white border border-green-300 bg-green-300 hover:bg-green-500'>Send Data to Lambda</button>
-            </div> */}
