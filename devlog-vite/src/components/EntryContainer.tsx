@@ -29,7 +29,7 @@ const EntryContainer: React.FC<EntryContainerProps> = ({ data }) => {
         })
     } catch (error) {
         if(data == undefined){
-            
+            return
         } else {
             console.error('Error parsing JSON:' + error);
         }
