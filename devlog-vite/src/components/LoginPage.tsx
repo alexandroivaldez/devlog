@@ -1,8 +1,11 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, Route, redirect, useNavigate } from 'react-router-dom';
+
 
 const LoginPage = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         username: '',
@@ -29,13 +32,13 @@ const LoginPage = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
+                    navigate("/addEntry", { replace: true }); // Or any other target path
                     return response.json();
                 } else {
                     throw new Error(`Request failed with status ${response.status}`);
                 }
             })
             .then((response) => {
-                console.log(response);
                 setFormData({
                     username: '',
                     password: ''

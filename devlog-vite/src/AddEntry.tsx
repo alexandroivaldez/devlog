@@ -1,6 +1,8 @@
 import BasicForm from "./components/BasicForm";
 
+
 const AddEntry = () => {
+
     return (
         <BasicForm />
     )
