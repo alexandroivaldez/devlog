@@ -1,4 +1,6 @@
+import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const BasicForm = () => {
 
@@ -56,44 +58,73 @@ const BasicForm = () => {
         });
     };
 
+    const currentDate: Date = new Date(); // Current data and time
+    let entries = 2;
+
     return (
-        <div className="flex flex-col">
-            <form onSubmit={handleSubmit} className="flex flex-col">
-                <div className="flex flex-col">
-                    <label htmlFor="type" className='text-white'>Type:</label>
-                    <input
-                        required
-                        type="text"
-                        id="type"
-                        name="type"
-                        value={formData.type}
-                        onChange={handleChange}
-                    />
+        <div className='bg-[#001E2B]'>
+            <nav className='flex justify-between bg-[#001E2B]'>
+                <div className='flex justify-between items-center gap-[5px] ml-[5px] mt-[5px]'>
+                    <Icon icon="mdi:github" width="20px" color="#6CF4B5" />
+                    <h1 className='text-[15px] text-[#008FE5]'><a href="https://github.com/alexandroivaldez/devlog" target='_blank'>alexandroivaldez / devlog</a></h1>
                 </div>
-                <div className="flex flex-col" >
-                    <label htmlFor="title" className='text-white'>Title:</label>
-                    <input
-                        required
-                        type="text"
-                        id="title"
-                        name="title"
-                        value={formData.title}
-                        onChange={handleChange}
-                    />
+            </nav>
+
+            <div className='w-[100%] h-[100%] bg-[#001E2B]'>
+                <div className='flex flex-col w-[75%] h-screen ml-auto mr-auto mt-[50px]'>
+                    <div className='flex flex-col w-[220px]'>
+                        <div className='flex w-[300px] items-center gap-[5px]'>
+                            <h1 className='text-[#E5EAE8]'><Link to="/"><Icon icon="solar:arrow-left-linear" className='color-[#878787] text-[35px]' /></Link></h1>
+                            <h1 className='text-[50px] text-[#E5EAE8]'>Enter Log</h1>
+                        </div>
+                        <div className='flex justify-between'>
+                            <p className='text-[#B9C0BF]'>{currentDate.toDateString()}</p>
+                        </div>
+                    </div>
+                    <form onSubmit={handleSubmit} className="flex flex-col bg-[#001E2B] items-center justify-center">
+                        <div className="flex flex-col w-[90%]">
+                            <label htmlFor="type" className='text-[#6CF4B5]  mt-[15px]'>Type:</label>
+                            <input
+                                required
+                                type="text"
+                                placeholder="Write type here..."
+                                id="type"
+                                name="type"
+                                value={formData.type}
+                                onChange={handleChange}
+                                className="p-1 border border-[#B9C0BF] bg-[#12232C] rounded-md text-white"
+                            />
+                        </div>
+                        <div className="flex flex-col w-[90%]" >
+                            <label htmlFor="title" className='text-[#6CF4B5]  mt-[15px]'>Title:</label>
+                            <input
+                                required
+                                type="text"
+                                placeholder="Write title here..."
+                                id="title"
+                                name="title"
+                                value={formData.title}
+                                onChange={handleChange}
+                                className="p-1 border border-[#B9C0BF] bg-[#12232C] rounded-md text-white"
+                            />
+                        </div>
+                        <div className="flex flex-col w-[90%]">
+                            <label htmlFor="content" className='text-[#6CF4B5] mt-[15px]'>Log Content:</label>
+                            <textarea
+                                placeholder="Write your thoughts here..."
+                                required
+                                rows={4}
+                                id="content"
+                                name="content"
+                                value={formData.content}
+                                onChange={handleChange}
+                                className="p-2.5 border border-[#B9C0BF] bg-[#12232C] rounded-md  text-white"
+                            />
+                        </div>
+                        <button type="submit" className='mt-[15px] bg-[#6CF4B5] text-white rounded-md p-[5px] w-[20%]'>Submit</button>
+                    </form>
                 </div>
-                <div className="flex flex-col">
-                    <label htmlFor="content" className='text-white'>Content:</label>
-                    <input
-                        required
-                        type="textarea"
-                        id="content"
-                        name="content"
-                        value={formData.content}
-                        onChange={handleChange}
-                    />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+            </div>
         </div>
     );
 }

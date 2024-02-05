@@ -18,12 +18,15 @@ const EntryContainer: React.FC<EntryContainerProps> = ({ data }) => {
         const dataArray = JSON.parse(data);
 
         entries = dataArray.map((entry, id) => {
+
+            const strippedDateString = entry.date.replace(/(\d{4}).*/, '$1');
+
             return (
                 <div className='flex flex-col mt-[50px]' key={id} >
                     <h3 className='text-[#6CF4B5]'>{entry.type}</h3>
                     <h2 className='text-[30px] font-semibold text-[#008FE5] hover:cursor-pointer'>{entry.title}</h2>
                     <p className='text-[#E5EAE8]'>{entry.content}</p>
-                    <p className='flex text-[#B9C0BF]'>{entry.date.toLocaleString()}</p>
+                    <p className='flex text-[#B9C0BF]'>{strippedDateString}</p>
                 </div>
             )
         })
@@ -36,10 +39,8 @@ const EntryContainer: React.FC<EntryContainerProps> = ({ data }) => {
         
     }
 
-
-
     return (
-        <div>
+        <div className=' h-screen'>
             {entries}
         </div>
     )
