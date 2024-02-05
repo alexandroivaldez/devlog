@@ -51,7 +51,7 @@ function App() {
       </nav>
 
       {/* <p className="text-white">{responseMessage}</p> */}
-      <div className='w-screen h-screen bg-[#001E2B]'>
+      <div className='w-[100%] h-[100%] bg-[#001E2B]'>
         <div className='flex flex-col w-[75%] ml-auto mr-auto mt-[50px] justify-center'>
           <div className='flex flex-col w-[220px]'>
             <h1 className='text-[50px] text-[#E5EAE8]'>Devlog</h1>
