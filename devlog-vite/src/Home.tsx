@@ -52,6 +52,7 @@ const Home = () => {
                 <div className='flex flex-col w-[75%] ml-auto mr-auto mt-[50px] justify-center'>
                     <div className='flex flex-col w-[220px]'>
                         <h1 className='text-[50px] text-[#E5EAE8]'><Link to="/addEntry">Devlog</Link></h1>
+                        <p className='text-white'><Link to="/login">login</Link></p>
                         <div className='flex justify-between'>
                             <p className='text-[#B9C0BF]'>{currentDate.toDateString()}</p>
                         </div>
