@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, Navigate, Route, redirect, useNavigate } from 'react-router-dom';
 
 
-const LoginPage = () => {
+const LoginPage = ({setIsAuthenticated}) => {
 
     const navigate = useNavigate();
 
@@ -32,17 +32,20 @@ const LoginPage = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    navigate("/addEntry", { replace: true }); // Or any other target path
                     return response.json();
                 } else {
                     throw new Error(`Request failed with status ${response.status}`);
                 }
             })
             .then((response) => {
-                setFormData({
-                    username: '',
-                    password: ''
-                });
+                if(response.statusCode == 200){
+                    setIsAuthenticated(true);
+                    navigate("/addEntry", { replace: true });
+                    setFormData({
+                        username: '',
+                        password: ''
+                    });
+                }
             })
             .catch((error) => {
                 console.error(error.message);
