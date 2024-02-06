@@ -17,7 +17,7 @@ const EntryContainer: React.FC<EntryContainerProps> = ({ data }) => {
     try {
         const dataArray = JSON.parse(data);
 
-        entries = dataArray.map((entry, id) => {
+        entries = dataArray.map((entry: any, id:any) => {
 
             const strippedDateString = entry.date.replace(/(\d{4}).*/, '$1');
 

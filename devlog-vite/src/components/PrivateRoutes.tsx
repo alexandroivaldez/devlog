@@ -1,6 +1,10 @@
 import {Outlet, Navigate} from 'react-router-dom'
 
-const PrivateRoutes = ({isAuthenticated, children, ...rest}) => {
+interface PrivateRoutesProps {
+    isAuthenticated: boolean;
+  }
+
+const PrivateRoutes: React.FC<PrivateRoutesProps> = ({isAuthenticated}) => {
     
     let auth = {'token': isAuthenticated}
 

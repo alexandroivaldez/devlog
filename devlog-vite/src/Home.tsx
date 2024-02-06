@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
 
-    const currentDate: Date = new Date(); // Current data and time
-    let entries = 2;
+    const currentDate: Date = new Date();
 
     const [responseMessage, setResponseMessage] = useState();
 

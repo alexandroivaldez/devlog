@@ -1,9 +1,12 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import React, { useState } from 'react';
-import { Link, Navigate, Route, redirect, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
+interface LoginPageProps {
+    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const LoginPage = ({setIsAuthenticated}) => {
+const LoginPage: React.FC<LoginPageProps> = ({ setIsAuthenticated }) => {
 
     const navigate = useNavigate();
 
@@ -12,7 +15,7 @@ const LoginPage = ({setIsAuthenticated}) => {
         password: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -20,7 +23,7 @@ const LoginPage = ({setIsAuthenticated}) => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         const url = 'https://1wtfq9fdi4.execute-api.us-east-1.amazonaws.com/dev';
         fetch(url, {
@@ -59,7 +62,6 @@ const LoginPage = ({setIsAuthenticated}) => {
     };
 
     const currentDate: Date = new Date(); // Current data and time
-    let entries = 2;
 
     return (
         <div className='bg-[#001E2B]'>
