@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const BasicForm = () => {
@@ -11,7 +11,7 @@ const BasicForm = () => {
         date: Date()
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -19,7 +19,7 @@ const BasicForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         const url = 'https://iivx7fdqk0.execute-api.us-east-1.amazonaws.com/dev';
         fetch(url, {
@@ -59,7 +59,6 @@ const BasicForm = () => {
     };
 
     const currentDate: Date = new Date(); // Current data and time
-    let entries = 2;
 
     return (
         <div className='bg-[#001E2B]'>
