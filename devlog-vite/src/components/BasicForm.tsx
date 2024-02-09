@@ -73,7 +73,7 @@ const BasicForm = () => {
                 <div className='flex flex-col w-[75%] h-screen ml-auto mr-auto mt-[50px]'>
                     <div className='flex flex-col w-[220px]'>
                         <div className='flex w-[300px] items-center gap-[5px]'>
-                            <h1 className='text-[#E5EAE8]'><Link to="/"><Icon icon="solar:arrow-left-linear" className='color-[#878787] text-[35px]' /></Link></h1>
+                            <h1 className='text-[#E5EAE8]' onClick={() => {alert("User logged out")}}><Link to="/"><Icon icon="solar:arrow-left-linear" className='color-[#878787] text-[35px]' /></Link></h1>
                             <h1 className='text-[50px] text-[#E5EAE8]'>Enter Log</h1>
                         </div>
                         <div className='flex justify-between'>

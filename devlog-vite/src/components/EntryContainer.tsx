@@ -25,14 +25,14 @@ const EntryContainer: React.FC<EntryContainerProps> = ({ data }) => {
                 <div className='flex flex-col mt-[50px]' key={id} >
                     <h3 className='text-[#6CF4B5]'>{entry.type}</h3>
                     <h2 className='text-[30px] font-semibold text-[#008FE5] hover:cursor-pointer'>{entry.title}</h2>
-                    <p className='text-[#E5EAE8]'>{entry.content}</p>
+                    <p className='text-[#E5EAE8]'>{`${entry.content.substring(0, 460)}...`}</p>
                     <p className='flex text-[#B9C0BF]'>{strippedDateString}</p>
                 </div>
             )
         })
     } catch (error) {
         if(data == undefined){
-            
+            // I'll fix this later
         } else {
             console.error('Error parsing JSON:' + error);
         }
